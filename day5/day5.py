@@ -9,48 +9,46 @@ def run(p):
         modes = [0,0,0]
         for i in range(len(instr[:-2])):
             modes[-i-(4-len(instr[:-2]))] = int(instr[:-2][i])
-        offset = 0
 
         if cmd == 1:
             p[p[ptr+3]] = get_val(p, modes[0], p[ptr+1]) + get_val(p, modes[1], p[ptr+2])
-            offset = 4
+            ptr += 4
         elif cmd == 2:
             p[p[ptr+3]] = get_val(p, modes[0], p[ptr+1]) * get_val(p, modes[1], p[ptr+2])
-            offset = 4
+            ptr += 4
         elif cmd == 3:
             p[p[ptr+1]] = int(input("Input: "))
-            offset = 2
+            ptr += 2
         elif cmd == 4:
             print("Output:", get_val(p, modes[0], p[ptr+1]))
-            offset = 2
+            ptr += 2
         elif cmd == 5:
             if get_val(p, modes[0], p[ptr+1]) != 0:
                 ptr = get_val(p, modes[1], p[ptr+2])
-                continue
-            offset = 3
+            else:
+                ptr += 3
         elif cmd == 6:
             if get_val(p, modes[0], p[ptr+1]) == 0:
                 ptr = get_val(p, modes[1], p[ptr+2])
-                continue
-            offset = 3
+            else:
+                ptr += 3
         elif cmd == 7:
             if get_val(p, modes[0], p[ptr+1]) < get_val(p, modes[1], p[ptr+2]):
                 p[p[ptr+3]] = 1
             else:
                 p[p[ptr+3]] = 0
-            offset = 4
+            ptr += 4
         elif cmd == 8:
             if get_val(p, modes[0], p[ptr+1]) == get_val(p, modes[1], p[ptr+2]):
                 p[p[ptr+3]] = 1
             else:
                 p[p[ptr+3]] = 0
-            offset = 4
+            ptr += 4
         elif cmd == 99:
             break
         else:
             print("Something went wrong.")
             exit(1)
-        ptr += offset
 
 def get_val(p, m, x):
     if m == 0:
