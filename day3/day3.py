@@ -63,24 +63,3 @@ print(find_shortest(line3, line4, size))
 line5 = ["R98","U47","R26","D63","R33","U87","L62","D20","R33","U53","R51"]
 line6 = ["U98","R91","D20","R16","D67","R40","U7","R15","U6","R7"]
 print(find_shortest(line5, line6, size))
-
-"""board = np.zeros((size, size)).astype(np.uint8)
-l1, l2 = load_lines("day3/lines.txt")
-
-print(plt(board, l1, 1, (size//2, size//2)))
-print(plt(board, l2, 2, (size//2, size//2)))
-
-board = np.zeros((size, size)).astype(np.uint8)
-l3 = ["R75","D30","R83","U83","L12","D49","R71","U7","L72"]
-l4 = ["U62","R66","U55","R34","D71","R55","D58","R83"]
-
-print(plt(board, l3, 1, (size//2, size//2)))
-print(plt(board, l4, 2, (size//2, size//2)))
-
-board = np.zeros((size, size)).astype(np.uint8)
-l5 = ["R98","U47","R26","D63","R33","U87","L62","D20","R33","U53","R51"]
-l6 = ["U98","R91","D20","R16","D67","R40","U7","R15","U6","R7"]
-
-print(plt(board, l5, 1, (size//2, size//2)))
-print(plt(board, l6, 2, (size//2, size//2))) """
-
