@@ -1,6 +1,6 @@
 class IntCodePc:
     def __init__(self, program):
-        self.p = list(program)#+(10*len(program)*[0]))
+        self.p = list(program)
         self.ptr = 0
         self.rel_base = 0
         self.modes = []
@@ -33,13 +33,7 @@ class IntCodePc:
         while self.ptr <= len(self.p):
             instr = str(self.p[self.ptr])
             cmd = int(instr[-2:])
-            self.modes = [0,0,0]
-            mo =  [int(i) for i in instr[:-2]] + ([0]*(3-len(instr[:-2])))
-            for i in range(len(instr[:-2])):
-                self.modes[-i-(4-len(instr[:-2]))] = int(instr[:-2][i])
-            print(mo)
-            print(self.modes)
-            print()
+            self.modes = [int(i) for i in reversed(instr[:-2])] + ([0]*(3-len(instr[:-2])))
 
             if cmd == 1:
                 self.set_val(3, self.get_val(1) + self.get_val(2))
