@@ -132,15 +132,15 @@ while True:
         direction = "U"
     elif direction == "R" and rotation == 1:
         direction = "D"
-    if direction == "L" and rotation == 0:
+    elif direction == "L" and rotation == 0:
         direction = "D"
     elif direction == "L" and rotation == 1:
         direction = "U"
-    if direction == "U" and rotation == 0:
+    elif direction == "U" and rotation == 0:
         direction = "L"
     elif direction == "U" and rotation == 1:
         direction = "R"
-    if direction == "D" and rotation == 0:
+    elif direction == "D" and rotation == 0:
         direction = "R"
     elif direction == "D" and rotation == 1:
         direction = "L"
