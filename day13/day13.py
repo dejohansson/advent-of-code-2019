@@ -107,15 +107,21 @@ while True:
         score = z
         print("\rScore:", score, end="")
     else:
-        if z == 3: pad_pos = (x, y)
-        elif z == 4: ball_pos = (x, y)
         grid[y,x] = z
+        if z == 3: 
+            pad_pos = (x, y)
+            img.set_data(grid)
+            plt.pause(0.0000005)
+        elif z == 4: 
+            ball_pos = (x, y)
+            img.set_data(grid)
+            plt.pause(0.0000005)
+        
         if ball_pos[0] < pad_pos[0]:
             joystick = -1
         elif ball_pos[0] > pad_pos[0]:
             joystick = 1
         else:
             joystick = 0
-    img.set_data(grid)
-    plt.pause(0.0000005)
+img.set_data(grid)    
 plt.pause(5)
