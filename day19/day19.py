@@ -103,24 +103,27 @@ program = [109,424,203,1,21101,0,11,0,1105,1,282,21101,18,0,0,1105,1,259,1202,1,
 drone_system = IntCodePc(program)
 
 grid_size = 50
-grid = [["." for i in range(grid_size)] for _ in range(grid_size)]
+grid = []
 points = 0
 for y in range(grid_size):
+    grid.append([])
     for x in range(grid_size):
         output = drone_system.run([x, y])
         if output == 1:
             points += 1
-            grid[y][x] = "#"
+            grid[y].append("#")
+        else:
+            grid[y].append(".")
         drone_system.reset()
 for line in grid:
     print("".join(line))
 print("Part 1:", points)
 
-def get_square_pos(size, pr):
+def get_square_pos(size, pr, max_depth):
     line_start = {}
-    for y in range(1000):
+    for y in range(max_depth):
         print("Y:", y, end="\r")
-        for x in range(line_start.get((y-1), 0), 1000):
+        for x in range(line_start.get((y-1), 0), max_depth):
             output = pr.run([x, y])
             pr.reset()
             if output == 1:
@@ -135,5 +138,5 @@ def get_square_pos(size, pr):
                 if dy != 1: continue
                 return x,y
 
-x, y = get_square_pos(100, drone_system)
+x, y = get_square_pos(100, drone_system, 1000)
 print("Part 2:", x*10000+y)
